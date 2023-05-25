@@ -15,7 +15,6 @@ function Navigation(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const { cartItems, onAdd, onRemove, onDelete } = props;
-
   return (
     <>
       <Navbar bg="light" variant="light" expand="lg">

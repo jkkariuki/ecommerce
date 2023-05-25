@@ -12,42 +12,12 @@ function Home(props) {
   const [category, setCategory] = useState("All");
   const [cartItems, setCartItems] = useState([]);
 
-  // function onAdd(product) {
-  //   const exist = cartItems.find((item) => item.id === product.id);
-
-  //   if (exist) {
-  //     setCartItems(
-  //       cartItems.map((item) =>
-  //         item.id === product.id ? { ...exist, qty: exist.qty + 1 } : item
-  //       )
-  //     );
-  //   } else {
-  //     setCartItems([...cartItems, { ...product, qty: 1 }]);
-  //   }
-  // }
-
-  // function onRemove(product) {
-  //   const exist = cartItems.find((item) => item.id === product.id);
-
-  //   if (exist.qty === 1) {
-  //     setCartItems(
-  //       cartItems.filter((item) =>
-  //         item.id != product.id ? { ...exist, qty: exist.qty + 1 } : item
-  //       )
-  //     );
-  //   } else {
-  //     setCartItems([...cartItems, { ...product, qty: 1 }]);
-  //   }
-  // }
-
-  console.log();
-
   function handleFilter(category) {
     console.log(category);
     if (category === "All") {
       console.log(category);
+
       getAllProducts().then((res) => {
-        // console.log(res.data);
         setInventory(res.data.products);
       });
     } else {

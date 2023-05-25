@@ -7,6 +7,26 @@ function CartBasket(props) {
   const shippingPrice = itemsPrice > 2000 ? 0 : 20;
   const totalPrice = itemsPrice + taxPrice + shippingPrice;
 
+  const checkout = async () => {
+    console.log(cartItems);
+    await fetch("http://localhost:4000/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ items: cartItems }),
+    })
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
+      .then((response) => {
+        if (response.url) {
+          window.location.assign(response.url);
+        }
+      });
+  };
+
   return (
     <div>
       <div>{cartItems.length === 0 && <div>Cart is Empty</div>}</div>
@@ -57,9 +77,7 @@ function CartBasket(props) {
           </div>
           <hr />
           <div className="row">
-            <button onClick={() => alert("Implement Checkout!")}>
-              Checkout
-            </button>
+            <button onClick={checkout}>Checkout</button>
           </div>
         </>
       )}
